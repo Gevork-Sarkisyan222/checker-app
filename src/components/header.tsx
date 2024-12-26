@@ -1,4 +1,5 @@
 import { BellDot, Search } from 'lucide-react';
+import Link from 'next/link';
 import React from 'react';
 
 type Props = {};
@@ -19,9 +20,13 @@ function Header({}: Props) {
       </div>
 
       {/* Right Side */}
-      <div className="flex gap-[20px] items-center">
-        <BellDot className="text-gray-600 cursor-pointer" />
-      </div>
+      <Link href="/profile" className="flex gap-[20px] items-center">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUdrqWQN9uteiwRksBUaMnpkB6C5SPI26XHw&s"
+          alt="User Avatar"
+          className="w-10 h-10 rounded-full"
+        />
+      </Link>
     </header>
   );
 }

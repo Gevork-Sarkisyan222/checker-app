@@ -27,13 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="flex h-screen">
+        <div className="flex flex-col h-screen md:flex-row">
           <SideBar />
-          <div className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col overflow-auto">
             <Header />
-            <main style={{ padding: '30px' }} className="flex-1 bg-[#ffffff]">
-              {children}
-            </main>
+            <main className="flex-1 p-6 bg-[#ffffff]">{children}</main>
           </div>
         </div>
       </body>
