@@ -83,14 +83,6 @@ function SideBar({}: Props) {
               <FileText size={18} />
               Function
             </Link>
-            <li className="flex items-center gap-2 text-gray-500 text-sm font-medium cursor-pointer">
-              <CreditCard size={18} />
-              Manage Menu
-            </li>
-            <li className="flex items-center gap-2 text-gray-500 text-sm font-medium cursor-pointer">
-              <User size={18} />
-              Customer Review
-            </li>
           </ul>
         </div>
       </nav>

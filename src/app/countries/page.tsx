@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 
 type Country = {
   name: string;
@@ -30,22 +32,62 @@ const countries: Country[] = [
     accounts: 3,
   },
   {
-    name: 'США',
-    flag: '🇺🇸',
+    name: 'Netherlands',
+    flag: 'NE',
     flagUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/1200px-Flag_of_the_Netherlands.svg.png',
     accounts: 0,
   },
 ];
 
 const CountriesPage: React.FC = () => {
-  const activeCountries = countries.filter((country) => country.accounts > 0);
+  const [search, setSearch] = useState('');
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
+  const filteredCountries = countries.filter((country) =>
+    country.name.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
-    <div style={{ padding: '16px', maxWidth: '1200px', margin: '0 auto' }}>
-      <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}>Список стран</h1>
-      {activeCountries.length > 0 ? (
-        activeCountries.map((country, index) => (
+    <div style={{ padding: '16px', maxWidth: '1200px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}>Список стран</h1>
+        <button
+          style={{
+            backgroundColor: '#10b981',
+            color: 'white',
+            padding: '8px',
+            borderRadius: '50%',
+            width: '32px',
+            height: '32px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+          }}
+          onClick={() => setIsInfoOpen(!isInfoOpen)}>
+          i
+        </button>
+      </div>
+      {isInfoOpen && (
+        <p style={{ fontSize: '18px', margin: '16px 0' }}>
+          Это список стран, справа от них количество активных сессий.
+        </p>
+      )}
+      <input
+        type="text"
+        style={{
+          width: '100%',
+          padding: '8px',
+          marginBottom: '16px',
+          borderRadius: '8px',
+          border: '1px solid #ccc',
+        }}
+        placeholder="Введите страну для поиска"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      {filteredCountries.length > 0 ? (
+        filteredCountries.map((country, index) => (
           <div
             key={index}
             style={{

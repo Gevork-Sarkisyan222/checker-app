@@ -44,19 +44,49 @@ const PacksTemplate = ({}: Props) => {
         </div>
       )}
 
-      <ul className="list-disc pl-5 text-[22px]">
-        <li>
-          <Link href={'/key/1'} className="cursor-pointer block">
+      <ul className="list-none p-0 m-0">
+        <li
+          style={{
+            width: '100%',
+            padding: '16px',
+            borderRadius: '12px',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            marginBottom: '16px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <Link href={'/key/1'} style={{ cursor: 'pointer', flexGrow: 1 }}>
             Ключ 1
           </Link>
         </li>
-        <li>
-          <Link href={'/key/2'} className="cursor-pointer block">
+        <li
+          style={{
+            width: '100%',
+            padding: '16px',
+            borderRadius: '12px',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            marginBottom: '16px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <Link href={'/key/2'} style={{ cursor: 'pointer', flexGrow: 1 }}>
             Ключ 2
           </Link>
         </li>
-        <li>
-          <Link href={'/key/3'} className="cursor-pointer block">
+        <li
+          style={{
+            width: '100%',
+            padding: '16px',
+            borderRadius: '12px',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            marginBottom: '16px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <Link href={'/key/3'} style={{ cursor: 'pointer', flexGrow: 1 }}>
             Ключ 3
           </Link>
         </li>

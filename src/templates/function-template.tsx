@@ -9,6 +9,9 @@ const FunctionTemplate = ({}: Props) => {
   const [intervalHours, setIntervalHours] = useState('');
   const [botName, setBotName] = useState('');
   const [keyword, setKeyword] = useState('');
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [botToken, setBotToken] = useState('текущий_бот_токен');
+  const [chatId, setChatId] = useState('текущий_чат_ID');
 
   const handleStartCheck = () => {
     alert('Одноразовый чек будет исполнен сейчас!');
@@ -16,6 +19,10 @@ const FunctionTemplate = ({}: Props) => {
 
   const handleAccountClick = () => {
     alert('Список стран с количеством активных сессий.');
+  };
+
+  const handleEditModalToggle = () => {
+    setIsEditModalOpen(!isEditModalOpen);
   };
 
   return (
@@ -98,12 +105,29 @@ const FunctionTemplate = ({}: Props) => {
         </div>
       </div>
 
+      {/* Кнопка изменение бота */}
+      <button
+        className="mb-5"
+        style={{
+          width: 'max-content',
+          whiteSpace: 'nowrap',
+          backgroundColor: '#3b82f6',
+          color: 'white',
+          padding: '8px',
+          borderRadius: '4px',
+          cursor: 'pointer',
+          marginTop: '24px',
+        }}
+        onClick={handleEditModalToggle}>
+        Изменение бота
+      </button>
+
       {/* Кнопка аккаунты */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Link href={'/countries'}>
           <button
             style={{
-              width: '120px',
+              width: '137.34px',
               backgroundColor: '#34d399',
               color: 'white',
               padding: '8px',
@@ -113,27 +137,12 @@ const FunctionTemplate = ({}: Props) => {
             Аккаунты
           </button>
         </Link>
-        <button
-          style={{
-            width: '32px',
-            height: '32px',
-            backgroundColor: '#10b981',
-            color: 'white',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-          }}
-          onClick={handleAccountClick}>
-          i
-        </button>
       </div>
 
       {/* FAQ */}
       <button
         style={{
-          width: '120px',
+          width: '137.34px',
           backgroundColor: '#22c55e',
           color: 'white',
           padding: '8px',
@@ -143,6 +152,44 @@ const FunctionTemplate = ({}: Props) => {
         }}>
         FAQ
       </button>
+
+      {/* Модалка изменение бота */}
+      {isEditModalOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+          onClick={handleEditModalToggle}>
+          <div
+            className="bg-white p-6 rounded-[20px] w-full max-w-md transition-all transform duration-300 ease-out"
+            style={{
+              transform: isEditModalOpen ? 'scale(1)' : 'scale(0.8)',
+              opacity: isEditModalOpen ? 1 : 0,
+            }}
+            onClick={(e) => e.stopPropagation()}>
+            <h2 className="text-xl mb-2 font-bold">Изменить бота</h2>
+            <label className="block text-lg font-medium mb-2">Текущий бот токен:</label>
+            <input
+              className="w-full p-2 border rounded mb-2"
+              type="text"
+              placeholder="Введите бот токен"
+              value={botToken}
+              onChange={(e) => setBotToken(e.target.value)}
+            />
+            <label className="block text-lg font-medium mb-2">Текущий чат ID:</label>
+            <input
+              className="w-full p-2 border rounded mb-4"
+              type="text"
+              placeholder="Введите чат ID"
+              value={chatId}
+              onChange={(e) => setChatId(e.target.value)}
+            />
+            <button
+              className="w-full bg-blue-500 text-white py-2 rounded-[20px] hover:bg-blue-600"
+              onClick={handleEditModalToggle}>
+              Сохранить изменения
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
