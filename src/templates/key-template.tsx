@@ -90,7 +90,7 @@ const KeyTemplate = ({}: Props) => {
               className="w-full p-2 border rounded mb-2"
               type="text"
               placeholder="Введите username бота (@bot)"
-              defaultValue={selectedBot}
+              defaultValue={selectedBot || ''}
             />
             <div style={{ gap: '15px', alignItems: 'center' }} className="flex">
               <button
@@ -101,14 +101,14 @@ const KeyTemplate = ({}: Props) => {
               <button
                 className="w-full py-2 rounded-[20px] hover:bg-red-600 mt-2"
                 style={{ backgroundColor: 'red', color: 'white' }}
-                onClick={() => handleDeleteBot(selectedBot)}>
+                onClick={() => handleDeleteBot(selectedBot || '')}>
                 Удалить
               </button>
             </div>
             <button
               className="w-full py-2 rounded-[20px] hover:bg-green-600 mt-2"
               style={{ backgroundColor: 'green', color: 'white' }}
-              onClick={() => handlePositions(selectedBot)}>
+              onClick={() => handlePositions(selectedBot || '')}>
               Позиции
             </button>
           </div>
