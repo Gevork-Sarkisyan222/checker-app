@@ -26,7 +26,7 @@ function SideBar({}: Props) {
   };
 
   return (
-    <aside className="md:w-[250px] w-full bg-[#f8f9fc] h-auto md:h-screen border-t border-[#C8CBD9] flex flex-col p-[20px] pl-[30px] pt-[35px] md:pt-[35px]">
+    <aside className="md:w-[250px] w-full bg-[#f8f9fc] h-auto md:h-screen border-t border-[#C8CBD9] flex flex-col p-[20px] pl-[30px] pt-[35px] md:pt-[35px] max-[775px]:hidden">
       {/* Logo */}
       <Link href={'/'} className="flex items-center gap-2 mb-[30px]">
         <div className="bg-blue-500 rounded-full w-[35px] h-[35px] flex items-center justify-center text-white text-lg font-bold">
