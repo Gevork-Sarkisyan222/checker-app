@@ -1,5 +1,7 @@
 'use client';
 
+import DesktopModal from '@/components/desktop-modal';
+import MobileModal from '@/components/mobile-modal';
 import { useParams, useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
@@ -51,16 +53,8 @@ const KeyTemplate = ({}: Props) => {
       </div>
 
       {isAddModalOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-          onClick={handleAddModalToggle}>
-          <div
-            className="bg-white p-6 rounded-[20px] w-full max-w-md transition-all transform duration-300 ease-out"
-            style={{
-              transform: isAddModalOpen ? 'scale(1)' : 'scale(0.8)',
-              opacity: isAddModalOpen ? 1 : 0,
-            }}
-            onClick={(e) => e.stopPropagation()}>
+        <>
+          <DesktopModal handleModalToggle={handleAddModalToggle} isModalOpen={isAddModalOpen}>
             <h2 className="text-xl mb-2">Добавить бота</h2>
             <input
               className="w-full p-2 border rounded mb-2"
@@ -70,21 +64,25 @@ const KeyTemplate = ({}: Props) => {
             <button className="w-full bg-blue-500 text-white py-2 rounded-[20px] hover:bg-blue-600">
               Добавить
             </button>
-          </div>
-        </div>
+          </DesktopModal>
+
+          <MobileModal handleModalToggle={handleAddModalToggle} isModalOpen={isAddModalOpen}>
+            <h2 className="text-xl mb-2">Добавить бота</h2>
+            <input
+              className="w-full p-2 border rounded mb-2"
+              type="text"
+              placeholder="Введите username бота (@bot)"
+            />
+            <button className="w-full bg-blue-500 text-white py-2 rounded-[20px] hover:bg-blue-600">
+              Добавить
+            </button>
+          </MobileModal>
+        </>
       )}
 
       {isEditModalOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-          onClick={() => setIsEditModalOpen(false)}>
-          <div
-            className="bg-white p-6 rounded-[20px] w-full max-w-md transition-all transform duration-300 ease-out"
-            style={{
-              transform: isEditModalOpen ? 'scale(1)' : 'scale(0.8)',
-              opacity: isEditModalOpen ? 1 : 0,
-            }}
-            onClick={(e) => e.stopPropagation()}>
+        <>
+          <DesktopModal handleModalToggle={handleEditModalToggle} isModalOpen={isEditModalOpen}>
             <h2 className="text-xl mb-2">Изменить бота</h2>
             <input
               className="w-full p-2 border rounded mb-2"
@@ -111,8 +109,37 @@ const KeyTemplate = ({}: Props) => {
               onClick={() => handlePositions(selectedBot || '')}>
               Позиции
             </button>
-          </div>
-        </div>
+          </DesktopModal>
+
+          <MobileModal handleModalToggle={handleEditModalToggle} isModalOpen={isEditModalOpen}>
+            <h2 className="text-xl mb-2">Изменить бота</h2>
+            <input
+              className="w-full p-2 border rounded mb-2"
+              type="text"
+              placeholder="Введите username бота (@bot)"
+              defaultValue={selectedBot || ''}
+            />
+            <div style={{ gap: '15px', alignItems: 'center' }} className="flex">
+              <button
+                className="w-full py-2 rounded-[20px] hover:bg-blue-600"
+                style={{ backgroundColor: 'blue', color: 'white' }}>
+                Сохранить
+              </button>
+              <button
+                className="w-full py-2 rounded-[20px] hover:bg-red-600 mt-2"
+                style={{ backgroundColor: 'red', color: 'white' }}
+                onClick={() => handleDeleteBot(selectedBot || '')}>
+                Удалить
+              </button>
+            </div>
+            <button
+              className="w-full py-2 rounded-[20px] hover:bg-green-600 mt-2"
+              style={{ backgroundColor: 'green', color: 'white' }}
+              onClick={() => handlePositions(selectedBot || '')}>
+              Позиции
+            </button>
+          </MobileModal>
+        </>
       )}
 
       <ul className="list-none p-0 m-0">

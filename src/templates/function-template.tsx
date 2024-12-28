@@ -1,5 +1,7 @@
 'use client';
 
+import DesktopModal from '@/components/desktop-modal';
+import MobileModal from '@/components/mobile-modal';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
@@ -155,16 +157,8 @@ const FunctionTemplate = ({}: Props) => {
 
       {/* Модалка изменение бота */}
       {isEditModalOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-          onClick={handleEditModalToggle}>
-          <div
-            className="bg-white p-6 rounded-[20px] w-full max-w-md transition-all transform duration-300 ease-out"
-            style={{
-              transform: isEditModalOpen ? 'scale(1)' : 'scale(0.8)',
-              opacity: isEditModalOpen ? 1 : 0,
-            }}
-            onClick={(e) => e.stopPropagation()}>
+        <>
+          <MobileModal handleModalToggle={handleEditModalToggle} isModalOpen={isEditModalOpen}>
             <h2 className="text-xl mb-2 font-bold">Изменить бота</h2>
             <label className="block text-lg font-medium mb-2">Текущий бот токен:</label>
             <input
@@ -187,8 +181,33 @@ const FunctionTemplate = ({}: Props) => {
               onClick={handleEditModalToggle}>
               Сохранить изменения
             </button>
-          </div>
-        </div>
+          </MobileModal>
+
+          <DesktopModal handleModalToggle={handleEditModalToggle} isModalOpen={isEditModalOpen}>
+            <h2 className="text-xl mb-2 font-bold">Изменить бота</h2>
+            <label className="block text-lg font-medium mb-2">Текущий бот токен:</label>
+            <input
+              className="w-full p-2 border rounded mb-2"
+              type="text"
+              placeholder="Введите бот токен"
+              value={botToken}
+              onChange={(e) => setBotToken(e.target.value)}
+            />
+            <label className="block text-lg font-medium mb-2">Текущий чат ID:</label>
+            <input
+              className="w-full p-2 border rounded mb-4"
+              type="text"
+              placeholder="Введите чат ID"
+              value={chatId}
+              onChange={(e) => setChatId(e.target.value)}
+            />
+            <button
+              className="w-full bg-blue-500 text-white py-2 rounded-[20px] hover:bg-blue-600"
+              onClick={handleEditModalToggle}>
+              Сохранить изменения
+            </button>
+          </DesktopModal>
+        </>
       )}
     </div>
   );

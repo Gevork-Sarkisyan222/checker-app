@@ -41,39 +41,22 @@ const BotCountriesPage: React.FC = () => {
   const bot = searchParams.get('bot');
 
   return (
-    <div style={{ padding: '16px', maxWidth: '1200px' }}>
-      <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}>
-        Позиции в поиске для {bot}
-      </h1>
-      <ul style={{ listStyleType: 'none', padding: '0', margin: '0' }}>
+    <div className="p-4 max-w-screen-xl">
+      <h1 className="text-2xl font-bold mb-4 max-[480px]:text-xl">Позиции в поиске для {bot}</h1>
+      <ul className="list-none p-0 m-0">
         {positions.map((position, index) => (
           <li
             key={index}
-            style={{
-              width: '100%',
-              padding: '16px',
-              borderRadius: '12px',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              marginBottom: '16px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            className="w-full p-4 rounded-xl shadow-lg mb-4 flex justify-between items-center max-[480px]:flex-col max-[480px]:items-start">
+            <div className="flex items-center">
               <img
+                className="w-10 h-10 rounded-full object-cover mr-2 max-[480px]:mb-2"
                 src={position.flagUrl}
                 alt={`${position.country} flag`}
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  objectFit: 'cover',
-                  marginRight: '8px',
-                }}
               />
-              <span style={{ fontSize: '18px' }}>{position.country}</span>
+              <span className="text-lg">{position.country}</span>
             </div>
-            <span style={{ fontSize: '18px' }}>Текущая позиция: {position.position}</span>
+            <span className="text-lg">Текущая позиция: {position.position}</span>
           </li>
         ))}
       </ul>

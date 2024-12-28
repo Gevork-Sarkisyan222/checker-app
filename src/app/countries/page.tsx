@@ -90,39 +90,22 @@ const CountriesPage: React.FC = () => {
         filteredCountries.map((country, index) => (
           <div
             key={index}
-            style={{
-              width: '100%',
-              padding: '16px',
-              borderRadius: '12px',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              marginBottom: '16px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            className="w-full p-4 rounded-lg shadow-md mb-4 flex flex-wrap items-center justify-between gap-4 max-[480px]:flex-col max-[480px]:items-start">
+            <div className="flex items-center gap-2">
               <span
-                style={{
-                  width: '12px',
-                  height: '12px',
-                  borderRadius: '50%',
-                  backgroundColor: country.accounts > 0 ? 'green' : 'red',
-                  marginRight: '8px',
-                }}></span>
+                className={`w-3 h-3 rounded-full ${
+                  country.accounts > 0 ? 'bg-green-500' : 'bg-red-500'
+                }`}></span>
               <img
                 src={country.flagUrl}
                 alt={`${country.name} flag`}
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  objectFit: 'cover',
-                  marginRight: '8px',
-                }}
+                className="w-10 h-10 rounded-full object-cover"
               />
-              <span style={{ fontSize: '18px' }}>{country.name}</span>
+              <span className="text-lg font-medium truncate">{country.name}</span>
             </div>
-            <span style={{ fontSize: '18px' }}>{country.accounts} активных аккаунтов</span>
+            <span className="text-lg text-right sm:text-left">
+              {country.accounts} активных аккаунтов
+            </span>
           </div>
         ))
       ) : (

@@ -12,3 +12,34 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    bottom: -50px;
+  }
+  to {
+    bottom: 0;
+  }
+}
+
+.no-borders {
+  @media (max-width: 560px) {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+}
+
+.hideInDesktop {
+  @media (min-width: 560px) {
+    display: none;
+  }
+}

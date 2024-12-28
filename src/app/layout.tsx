@@ -31,7 +31,7 @@ export default function RootLayout({
           <SideBar />
           <div className="flex-1 flex flex-col overflow-auto">
             <Header />
-            <main className="flex-1 p-6 bg-[#ffffff]">{children}</main>
+            <main className="flex-1 p-6 bg-[#ffffff] max-[540px]:px-[5px]">{children}</main>
           </div>
         </div>
       </body>

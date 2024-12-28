@@ -12,7 +12,7 @@ function HomeTemplate({}: Props) {
     router.push('/packs');
   }, [router]);
 
-  return <div>Home page</div>;
+  return <div>Home page loading...</div>;
 }
 
 export default HomeTemplate;
